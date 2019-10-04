@@ -39,6 +39,8 @@ int main()
   doughnutMode doughnutGame;
   MirrorMode mirrorGame;
 
+
+
   srand(time(0));
 
 
@@ -76,7 +78,7 @@ else if(gridType == 2)
     inFile.open(textFile);
     inFile >> row;
     inFile >> col;
-//cout << "test1" <<endl;
+
 }
 
 //=========== game type ==========================
@@ -88,6 +90,8 @@ cout << " My Game Type is: ";
 cin >> gameType;
 //============ end of game type =================
 
+
+// ================ output type ==================
 cout << " Output Type " << endl;
 cout << " \t Press 1 for 3 seconds in between pause " << endl;
 cout << " \t Press 2 for continue to output with 'Enter' key " << endl;
@@ -97,7 +101,7 @@ cin >> outputType;
 
 if (outputType == 3)
 {
-  cout << " Enter the output file name ";
+  cout << " Enter the output file name (ex: output1.txt)";
    cin >> outputFile;
    myGen.open(outputFile.c_str(), ofstream::out | ofstream::app);
 }
@@ -123,7 +127,7 @@ for (int i = 0; i < row; i++)
    }
 }
 
-
+//generate a random grid
 if(gridType == 1)
 {
 for (int x = 0; x < row; ++x)
@@ -143,26 +147,11 @@ for (int x = 0; x < row; ++x)
   }
 }
 
-/*for (int x = 0; x < row; ++x)
-{
-  for (int y = 0; y < col; ++y)
-  {
 
-    if (grid[x][y][0] == 0)
-    {
-      cout << " - ";
-    }
-    else if (grid[x][y][0] == 1)
-    {
-      cout << " X ";
-    }
-
-  }
-  cout << endl;
-
-}*/
 cout << endl;
 }
+
+// reads the file example: map1.txt
 
 if(gridType == 2)
       {       for (int x = 0; x < row; x++)
@@ -190,16 +179,12 @@ if(gridType == 2)
 //=============== end of grid type =============================
 
 
-
-
-
-
-
  int gridSize = row*col;
 
 
+// output original grid
  if (outputType == 1 )
- {
+ {cout << " Original Grid" << endl;
    for (int x = 0; x < row; ++x)
    {
      for (int y = 0; y < col; ++y)
@@ -222,7 +207,7 @@ if(gridType == 2)
  }
 
  else if (outputType == 2)
- {
+ {cout << " Original Grid" << endl;
    for (int x = 0; x < row; ++x)
    {
      for (int y = 0; y < col; ++y)
@@ -250,6 +235,39 @@ if(gridType == 2)
 
  }
 
+
+ else if (outputType == 3)
+ myGen << " Original Grid " << endl;
+ {
+   for (int x = 0; x < row; ++x)
+   {
+     for (int y = 0; y < col; ++y)
+     {
+
+
+       if (grid[x][y][0] == 0)
+       {
+         myGen << " - ";
+       }
+       else if (grid[x][y][0] == 1)
+       {
+         myGen << " X ";
+       }
+       //cout << endl;
+       //cout << " Press 'enter' key " << endl;
+       //cout << endl;
+     }
+
+     myGen << endl;
+   }
+      //<< " Press 'enter' key " << endl;
+
+      myGen << endl;
+
+ }
+
+
+// starts to generate the cells 
 do
 {
   //========= GRIDTYPE=====================================================
@@ -364,8 +382,9 @@ else if (outputType == 3)
       {
         myGen << " X ";
       }
-      myGen << endl;
+      //myGen << endl;
     }
+    myGen << endl;
   }
   myGen << endl;
 }
@@ -404,13 +423,7 @@ for (int x = 0; x < row; ++x)
       numofRounds++;
     }
 
-
-
 } while(playGrid == true);
-
-
-
-
 
   return 0;
 }
