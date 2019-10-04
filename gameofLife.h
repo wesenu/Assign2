@@ -1,10 +1,13 @@
+#ifndef GAMEOFLIFE_H
+#define GAMEOFLIFE_H
+
 class gameofLife
 {
 public:
   gameofLife();
   ~gameofLife();
 
-  classicMode();
-  ~classicMode();
-  //classicMode(int x, int y, int row, int col, int grid);
+
+
 };
+#endif
